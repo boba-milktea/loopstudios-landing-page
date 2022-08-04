@@ -1,0 +1,883 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+
+/* ======================== Code Starts ================================ */
+
+:root {
+    --dark-gray: hsl(0, 0%, 55%);
+    --very-dark-gray: hsl(0, 0%, 41%);
+    --head-fonts: 'Josefin Sans', sans-serif;
+    --body-fonts: 'Alata', sans-serif;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+/* ======================= header ================================= */
+
+#background.image {
+    margin: 0;
+    background-image: url("./images/mobile/image-hero.jpg");
+    background-size: cover;
+    height: 750px;
+}
+
+#background.image.black {
+    background-image: none;
+    background-color: black;
+}
+
+
+.header-wrapper {
+    height: 750px;
+    display: grid;
+    grid-template-columns: 25px minmax(0, 1fr) 25px;
+    grid-template-rows: 100px auto;
+}
+
+.header-logo {
+    width: 150px;
+}
+
+.topnav {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topnav .menu {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu>li a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--head-fonts);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.menu li {
+    position: relative;
+}
+
+a::after {
+    content: "";
+    height: 3px;
+    width: 35px;
+    background-color: white;
+    transition: all 400ms ease-in-out;
+}
+
+a:hover::after {
+    position: absolute;
+    top: 33px;
+    left: 5px;
+}
+
+
+/* =================== hamburger menu =========================== */
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-button::before,
+.menu-button,
+.menu-button::after {
+    position: absolute;
+    display: block;
+    height: 1.8px;
+    width: 26px;
+    background-color: white;
+    transition: transform 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.menu-button::before {
+    content: "";
+    margin-top: 8px;
+}
+
+.menu-button::after {
+    content: "";
+    margin-top: -8px;
+}
+
+.menu-button-container {
+    display: flex;
+    height: 100px;
+    width: 26px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#menu-toggle:checked+.menu-button-container>.menu-button::before {
+    margin-top: 0;
+    transform: rotate(405deg);
+}
+
+#menu-toggle:checked+.menu-button-container>.menu-button {
+    background-color: rgb(255, 255, 255, 0);
+}
+
+#menu-toggle:checked+.menu-button-container>.menu-button::after {
+    margin-top: 0;
+    transform: rotate(-405deg);
+}
+
+#menu-toggle:checked~.menu {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    background-color: black;
+}
+
+
+/* ! It's be good if :has-selector is supported by browsers*/
+/* .topnav:has(#menu-toggle:checked) {
+    background-color: black;
+} */
+
+#menu-toggle:checked~.menu>li {
+    margin-top: 2rem;
+}
+
+#menu-toggle:checked~.menu>li a {
+    font-size: 1.8rem;
+}
+
+
+/* =================== headline =========================== */
+
+
+.headline {
+    margin-top: 10em;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.headline.noShow {
+    display: none;
+}
+
+
+h1 {
+    font-size: 11vw;
+    line-height: 1;
+    font-family: var(--head-fonts);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 300;
+    border: 2px solid white;
+    padding: 1rem;
+}
+
+/* ========================= main ============================ */
+.intro-wrapper {
+    padding: 4em 1.3em
+}
+
+
+.img {
+    width: 100%;
+    height: auto;
+}
+
+.intro-block {
+    margin-top: 2em;
+    padding: 1em;
+}
+
+
+h2 {
+    font-family: var(--head-fonts);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 1em;
+    font-family: var(--body-fonts);
+    color: var(--dark-gray);
+    line-height: 2em;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.creation-wrapper {
+    padding: 0 1.3em 4em 1.3em;
+}
+
+
+.gallery {
+    margin-top: 2em;
+}
+
+.gallery-image {
+    position: relative;
+    height: 120px;
+    width: 100%;
+    margin-top: 1em;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.gallery-image::before {
+    content: "";
+    background-image: linear-gradient(to right, hsla(0, 0%, 0%, 0.5), transparent 20%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.gallery-image:nth-child(1) {
+    position: relative;
+    background-image: url(./images/mobile/image-deep-earth.jpg);
+}
+
+.gallery-image:nth-child(2) {
+    position: relative;
+    background-image: url(./images/mobile/image-night-arcade.jpg);
+}
+
+.gallery-image:nth-child(3) {
+    position: relative;
+    background-image: url(./images/mobile/image-soccer-team.jpg);
+}
+
+.gallery-image:nth-child(4) {
+    position: relative;
+    background-image: url(./images/mobile/image-grid.jpg);
+}
+
+.gallery-image:nth-child(5) {
+    position: relative;
+    background-image: url(./images/mobile/image-from-above.jpg);
+}
+
+.gallery-image:nth-child(6) {
+    position: relative;
+    background-image: url(./images/mobile/image-pocket-borealis.jpg);
+}
+
+.gallery-image:nth-child(7) {
+    position: relative;
+    background-image: url(./images/mobile/image-curiosity.jpg);
+}
+
+.gallery-image:nth-child(8) {
+    position: relative;
+    background-image: url(./images/mobile/image-fisheye.jpg);
+}
+
+
+.gallery-image:hover h3 {
+    color: black;
+}
+
+.gallery-image:hover::before {
+    content: "";
+    background-image: linear-gradient(to top, white, white);
+    opacity: .7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+
+.gallery-image h3 {
+    color: white;
+    font-family: var(--head-fonts);
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1.5em;
+    text-align: start;
+    position: relative;
+    top: 2em;
+    left: 1em;
+}
+
+
+
+.btn {
+    margin-top: 2em;
+    font-family: var(--head-fonts);
+    text-transform: uppercase;
+    background-color: white;
+    border: 3px solid var(--very-dark-gray);
+    font-weight: bolder;
+    letter-spacing: 3px;
+    padding: 0.7em 1em;
+    width: 50%;
+    margin-left: 25%;
+    cursor: pointer;
+    transition: background-color 1s;
+}
+
+.btn:hover {
+    background-color: black;
+    color: white;
+    border: 3px solid black;
+}
+
+/* ====================== footer ========================== */
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 3em 1.3em;
+    height: 400px;
+}
+
+.footer-wrapper {
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 3fr 0.5fr 0.5fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.footer-logo {
+    grid-row: 1/2;
+    width: 150px;
+}
+
+.footer-nav {
+    height: 100%;
+    grid-row: 2/3;
+    align-self: stretch;
+}
+
+.footer-menu {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.footer-menu a {
+    text-decoration: none;
+    font-family: var(--body-fonts);
+    color: white;
+    font-size: 15px;
+}
+
+.footer-menu li {
+    position: relative;
+}
+
+.footer-menu a:hover::after {
+    content: "";
+    height: 2px;
+    width: 20px;
+    color: white;
+    position: absolute;
+    top: 25px;
+    left: 10px;
+}
+
+.social-icons {
+    position: relative;
+    cursor: pointer;
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.social-icons .social-icon {
+    width: 1.5em;
+    margin-left: 1em;
+}
+
+.social-icon:hover {
+    transform: translateY(-10%);
+}
+
+.social-icon::after {
+    content: "";
+    height: 1px;
+    width: 24px;
+    background-color: white;
+}
+
+.social-icon:hover::after {
+    position: absolute;
+    top: 35px;
+    left: 0;
+}
+
+.copyright p {
+    margin: 0;
+    line-height: 1.5em;
+}
+
+.copyright {
+    grid-row: 4/5;
+}
+
+.attribution {
+    margin-top: 1em;
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+
+@media screen and (min-width: 800px) {
+
+    #background.image {
+        background-image: linear-gradient(to right, hsl(0, 0%, 0%, 0.5), hsl(0, 0%, 0%, 0.3)), url("./images/desktop/image-hero.jpg");
+        height: 650px;
+        width: 100%;
+    }
+
+    .menu-button {
+        display: none;
+    }
+
+    .header-wrapper {
+        height: 650px;
+        grid-template-columns: 10% 1fr 10%;
+        grid-template-rows: 150px auto;
+    }
+
+    .topnav {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+
+    .topnav .menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .menu li {
+        margin-left: 2em;
+    }
+
+    .menu li a {
+        font-family: var(--head-fonts);
+        text-transform: capitalize;
+        font-weight: bolder;
+        font-size: 18px;
+    }
+
+    .menu a:hover::after {
+        height: 2px;
+        width: 20px;
+        position: absolute;
+        top: 33px;
+        left: 20px;
+    }
+
+    .headline {
+        margin-top: 4em;
+        grid-column: 2/3;
+        grid-row: 2/3;
+        width: 55%;
+    }
+
+    h1 {
+        font-size: 5vw;
+        padding: 40px;
+    }
+
+    .header-logo {
+        width: 200px;
+    }
+
+
+    .intro-wrapper {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 10% repeat(10, 1fr) 10%;
+        grid-template-rows: 144px 1fr 1fr 1fr 144px;
+        padding: 0;
+
+    }
+
+    .image-block {
+        grid-column: 2/8;
+        grid-row: 2/-2;
+    }
+
+
+
+    .intro-block {
+        padding: 0;
+        margin-top: 0;
+        padding-left: 5em;
+        padding-top: 3em;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: flex-end;
+        grid-column: 7/-2;
+        grid-row: 3/5;
+    }
+
+    .intro-block h2,
+    .intro-block p {
+        text-align: left;
+    }
+
+    .intro-block h2 {
+        font-size: 4vw;
+    }
+
+    .creation-wrapper {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 10% 1fr 1fr 10%;
+        grid-template-rows: 100px 1fr 100px;
+        align-items: center;
+
+    }
+
+    .creation-wrapper h2 {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        justify-self: left;
+        align-self: baseline;
+        font-size: 3vw;
+    }
+
+    .btn {
+        padding: 0.7em 1em;
+        margin: 0;
+        width: 25%;
+        font-size: 1em;
+        grid-column: 3/4;
+        grid-row: 1/2;
+        justify-self: right;
+        align-self: baseline;
+    }
+
+    .gallery {
+        margin-top: 0;
+        display: grid;
+        grid-column: 2/4;
+        grid-row: 2/3;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 1em;
+    }
+
+    .gallery-image {
+        margin-top: 0;
+        height: 450px;
+        width: auto;
+    }
+
+    .gallery-image h3 {
+        font-size: 2vw;
+        text-align: start;
+        top: 12em;
+        left: 1em;
+    }
+
+    .gallery-image::before {
+        background-image: linear-gradient(to top, hsla(0, 0%, 0%, 0.5), transparent 80%);
+    }
+
+
+    .gallery-image:nth-child(1) {
+        grid-column: 1/2;
+        background-image: url(./images/desktop/image-deep-earth.jpg);
+    }
+
+    .gallery-image:nth-child(2) {
+        grid-column: 2/3;
+        background-image: url(./images/desktop/image-night-arcade.jpg);
+    }
+
+    .gallery-image:nth-child(3) {
+        grid-column: 3/4;
+        background-image: url(./images/desktop/image-soccer-team.jpg);
+    }
+
+    .gallery-image:nth-child(4) {
+        grid-column: 4/5;
+        background-image: url(./images/desktop/image-grid.jpg);
+    }
+
+    .gallery-image:nth-child(5) {
+        grid-column: 1/2;
+        background-image: url(./images/desktop/image-from-above.jpg);
+    }
+
+    .gallery-image:nth-child(6) {
+        grid-column: 2/3;
+        background-image: url(./images/desktop/image-pocket-borealis.jpg);
+    }
+
+    .gallery-image:nth-child(7) {
+        grid-column: 3/4;
+        background-image: url(./images/desktop/image-curiosity.jpg);
+    }
+
+    .gallery-image:nth-child(8) {
+        grid-column: 4/5;
+        background-image: url(./images/desktop/image-fisheye.jpg);
+    }
+
+
+    footer {
+        height: 100px;
+        padding: 3em 8em;
+    }
+
+    .footer-wrapper {
+        max-height: 100px;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        justify-items: start;
+        align-items: center;
+    }
+
+    .footer-logo {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .footer-nav {
+        width: 100%;
+    }
+
+    .footer-menu {
+        width: 100%;
+        flex-direction: row;
+        justify-self: stretch;
+        justify-content: space-between;
+    }
+
+    .footer-menu li {
+        margin-right: 1em;
+    }
+
+    .social-icons {
+        justify-self: end;
+        grid-column: 3/4;
+        grid-row: 1/2;
+    }
+
+    .social-icons svg {
+        width: 1.5em;
+        margin-left: 1em;
+    }
+
+    .social-icons p {
+        margin: 0;
+    }
+
+    .copyright {
+        justify-self: end;
+        grid-column: 2/4;
+        grid-row: 2/3;
+    }
+
+    .attribution {
+        margin-top: 0;
+        text-align: end;
+    }
+
+}
